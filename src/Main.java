@@ -3,7 +3,6 @@ public class Main  {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         Phone phone1 = new Phone("Samsung",scan.nextLine(),scan.nextLine(),"Black",170,6.6f,167.5f,67.4f,8,128);
-//        Phone phone1 = new Phone("Samsung","77771112345","Richard","Black",170,6.6f,167.5f,67.4f,8,128);
         Phone phone2 = new Phone("Iphone","77007898778","Gleb","Gold",174,6.1f,170.5f,68.5f,6,256);
         Phone phone3 = new Phone("Xiaomi","77052340000","Ivan","Silver",160,5.6f,150.6f,57.7f,4,64);
         Phone phone4 = new Phone("OPPO","77057678900","Oleg","Black",180,7f,180.5f,70.8f,8,512);
@@ -26,6 +25,16 @@ public class Main  {
         test(phone1.width);
         System.out.print(phone1.CPUcores);
         test(phone1.CPUcores);
+        System.out.print(phone1.memory);
+        test(phone1.memory);
+        System.out.print(phone1.memory);
+        test(phone1.memory);
+        System.out.print(phone1.otherConfigs.numOfCamera);
+        test(phone1.otherConfigs.numOfCamera);
+        System.out.print(phone1.otherConfigs.colorCase);
+        test(phone1.otherConfigs.colorCase);
+        System.out.print(phone1.otherConfigs.scanner);
+        test(phone1.otherConfigs.scanner);
         phone1.receiveCall();
         phone2.receiveCall();
         phone3.receiveCall();
@@ -42,9 +51,9 @@ public class Main  {
         private float width;
         private int CPUcores;
         private int memory;
-        private int numOfCamera;
-        private String colorCase;
-        private boolean scanner;
+
+        OtherConfigs otherConfigs = new OtherConfigs(2, "Black", true);
+
         public Phone(String model, String number, String ownerName, String color, int weight, float size, float height, float width, int CPUcores, int memory) {
             this.model = model;
             this.number = number;
@@ -56,12 +65,17 @@ public class Main  {
             this.width = width;
             this.CPUcores = CPUcores;
             this.memory = memory;
-            new Phone(2, "Black", true);
+
         }
-        public Phone(int numOfCamera, String colorCase, boolean scanner){
-            this.numOfCamera = numOfCamera;
-            this.colorCase = colorCase;
-            this.scanner = scanner;
+        static class OtherConfigs{
+            private int numOfCamera;
+            private String colorCase;
+            private boolean scanner;
+            OtherConfigs(int numOfCamera, String colorCase, boolean scanner) {
+                this.colorCase = colorCase;
+                this.scanner = scanner;
+                this.numOfCamera = numOfCamera;
+            }
         }
 
 
@@ -88,6 +102,9 @@ public class Main  {
         }
         else if(value instanceof Float){
             System.out.println(" Это Float ");
+        }
+        else if(value instanceof Boolean){
+            System.out.println(" Это Boolean ");
         }
     }
     public static class Empty{
